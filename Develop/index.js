@@ -8,37 +8,44 @@ const questions = [];
 const mockData = {
     title: "projectTitle",
     description: "project description",
-    tableOfContents: [
-        installation = {
+    tableOfContents: {
+        installation: {
             name: "Installation",
+            link: "#installation",
             display: true
         },
-        usage = {
+        usage: {
             name: "Usage",
+            link: "#usage",
             display: true
         },
-        credits = {
+        credits: {
             name: "Credits",
+            link: "#credits",
             display: true
         },
-        license = {
+        license: {
             name: "License",
+            link: "#license",
             display: true
         },
-        features = {
+        features: {
             name: "Features",
+            link: "#features",
             display: false
         },
-        howToContribute = {
+        howToContribute: {
             name: "How to Contribute",
+            link: "#how to contribute",
             display: true
         },
-        tests = {
+        tests: {
             name: "Tests",
+            link: "#tests",
             display: false
         },
-        display = true
-    ],
+        display: true
+    },
     installation: [
         "Step 1: Follow the first step",
         "Step 2: Follow the second step",
@@ -47,7 +54,10 @@ const mockData = {
     ],
     usage: "This is useful for doing things",
     credits: "I made this",
-    license: "My License",
+    license: {
+        name: "GNU",
+        link: "https://www.gnu.org/licenses/gpl-3.0-standalone.html"
+    },
     features: undefined,
     howToContribute: "You can contribute by contributing",
     tests: undefined

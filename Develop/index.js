@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const gm = require('./utils/generateMarkdown.js');
+const cf = require('./utils/createFile');
 
 // TODO: Create an array of questions for user input
 const questions = [];
@@ -32,7 +33,7 @@ const mockData = {
         features: {
             name: "Features",
             link: "#features",
-            display: false
+            display: true
         },
         howToContribute: {
             name: "How to Contribute",
@@ -42,15 +43,15 @@ const mockData = {
         tests: {
             name: "Tests",
             link: "#tests",
-            display: false
+            display: true
         },
         display: true
     },
     installation: [
-        "Step 1: Follow the first step",
-        "Step 2: Follow the second step",
-        "Step 3: Follow the third step",
-        "Step 4: Follow the fourth step"
+        "Follow the first step",
+        "Follow the second step",
+        "Follow the third step",
+        "Follow the fourth step"
     ],
     usage: "This is useful for doing things",
     credits: "I made this",
@@ -58,17 +59,20 @@ const mockData = {
         name: "GNU",
         link: "https://www.gnu.org/licenses/gpl-3.0-standalone.html"
     },
-    features: undefined,
+    features: "The feature kind",
     howToContribute: "You can contribute by contributing",
-    tests: undefined
+    tests: "The testy kind"
 }
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    cf.writeFile(fileName, data)
+        .then(console.log('success'));
+}
 
 // TODO: Create a function to initialize app
 function init() {
-    console.log(gm.generateMarkdown(mockData));
+    writeToFile('README.md', gm.generateMarkdown(mockData));
 }
 
 // Function call to initialize app

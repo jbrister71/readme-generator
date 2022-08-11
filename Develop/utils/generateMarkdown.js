@@ -1,48 +1,4 @@
-function generateInstallation(installation) {
-  let installationStr = '';
-
-  for(let i = 0; i < installation.length; i++) {
-    installationStr += `Step ${i+1}: ${installation[i]}.  
-    `;
-  }
-
-  return installationStr;
-};
-
-function generateFeatures(features) {
-  let featureStr = '';
-  
-  if(features) {
-    featureStr = `## Features
-    ${features}`;
-  }
-
-  return featureStr;
-};
-
-function generateHowToContribute(howToContribute) {
-  let howToContributeStr = '';
-
-  if(howToContribute) {
-    howToContributeStr = `## Contributing
-    ${howToContribute}`
-  }
-
-  return howToContributeStr;
-};
-
-function generateTests(tests) {
-  let testsStr = '';
-
-  if(tests) {
-    testsStr = `## Tests
-    `;
-    testsStr += `${tests}`;
-  }
-
-  return testsStr;
-};
-
+// Creates the string for the questions section
 function generateQuestions(username, email) {
   let questionsStr = '';
 
@@ -58,8 +14,7 @@ function generateQuestions(username, email) {
   return questionsStr;
 }
 
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+// Creates the license badge at the top of page and returns an empty string is no license is chosen
 function renderLicenseBadge(license) {
   if(license === 'No License') {
     return '';
@@ -69,8 +24,7 @@ function renderLicenseBadge(license) {
   return `![${license}](https://img.shields.io/badge/license-${licenseNoSpace}-green)`;
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
+// Returns a link to the license returned and returns and empty string is no license is chosen
 function renderLicenseLink(license) {
   let link = '';
 
@@ -98,8 +52,7 @@ function renderLicenseLink(license) {
   return link;
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
+// Returns a string explaining which license is used and an empty string if no license is chosen
 function renderLicenseSection(license) {
   if(license === 'No License') {
     return '';
@@ -108,7 +61,7 @@ function renderLicenseSection(license) {
   [This app is under the ${license} license.](${renderLicenseLink(license)})`;
 }
 
-// TODO: Create a function to generate markdown for README
+// Generates markdown for README.md
 function generateMarkdown(data) {
   const {title, description, installation, usage, license, contributing, tests, username, email} = data;
   

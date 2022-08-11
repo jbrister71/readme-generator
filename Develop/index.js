@@ -58,9 +58,10 @@ const questions = [
         }
     },
     {
-        type: 'checkbox',
+        type: 'list',
         name: 'license',
         message: "What license is your project under?",
+        default: 5,
         choices: ['Apache License 2.0', 'GNU GPLv2', 'GNU GPLv3', 'MIT', 'ISC', 'No License']
     },
     {
@@ -194,7 +195,9 @@ function init() {
         .then(data => {
             return writeToFile('README.md', gm.generateMarkdown(data));
         })
-        .then(console.log('File written!'))
+        .then(writeFileResponse => {
+            console.log('File written!')
+        })
         .catch(err => {
             console.log(err);
         });

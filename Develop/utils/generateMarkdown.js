@@ -65,7 +65,7 @@ function renderLicenseBadge(license) {
     return '';
   }
 
-  licenseNoSpace = license[0].replaceAll(" ", "_");
+  licenseNoSpace = license.replaceAll(" ", "_");
   return `![${license}](https://img.shields.io/badge/license-${licenseNoSpace}-green)`;
 }
 

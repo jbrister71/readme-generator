@@ -1,22 +1,24 @@
 # projectTitle
+  ![GNU](https://img.shields.io/badge/license-GNU-green)
 
   ## Description
   project description
 
   ## Table of Contents
-  [Installation](#installation)
-      [Usage](#usage)
-      [Credits](#credits)
-      [License](#license)
-      [Features](#features)
-      [How to Contribute](#how to contribute)
-      [Tests](#tests)
-      
+  1. [Installation](#installation)
+  2. [Usage](#usage)
+  3. [Credits](#credits)
+  4. [License](#license)
+  5. [Contributing](#contributing)
+  6. [Tests](#tests)
+  7. [Questions](#questions)
+
   ## Installation
-  Step 1: Follow the first step
-      Step 2: Follow the second step
-      Step 3: Follow the third step
-      Step 4: Follow the fourth step
+  Step 1: Follow the first step.  
+Step 2: Follow the second step.  
+Step 3: Follow the third step.  
+Step 4: Follow the fourth step.  
+
 
   ## Usage
   This is useful for doing things
@@ -25,14 +27,14 @@
   I made this
 
   ## License
-  https://www.gnu.org/licenses/gpl-3.0-standalone.html
-  ![GNU](https://img.shields.io/badge/license-GNU-green)
+  [This app is under the GNU license.](https://www.gnu.org/licenses/gpl-3.0-standalone.html)
+  
 
-  ## Features
-    The feature kind
-
-  ## How to Contribute
-    You can contribute by contributing
+  ## Contributing
+You can contribute by contributing
 
   ## Tests
-    The testy kind
+The test kind
+
+  ## Questions
+Questions can be directed to [my github profile](https://github.com/jbrister71) or email me at [email@email.email](email@email.email).

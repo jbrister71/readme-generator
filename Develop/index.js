@@ -30,19 +30,19 @@ const mockData = {
             link: "#license",
             display: true
         },
-        features: {
-            name: "Features",
-            link: "#features",
-            display: true
-        },
         howToContribute: {
-            name: "How to Contribute",
-            link: "#how to contribute",
+            name: "Contributing",
+            link: "#contributing",
             display: true
         },
         tests: {
             name: "Tests",
             link: "#tests",
+            display: true
+        },
+        question: {
+            name: "Questions",
+            link: "#questions",
             display: true
         },
         display: true
@@ -59,9 +59,12 @@ const mockData = {
         name: "GNU",
         link: "https://www.gnu.org/licenses/gpl-3.0-standalone.html"
     },
-    features: "The feature kind",
     howToContribute: "You can contribute by contributing",
-    tests: "The testy kind"
+    tests: "The test kind",
+    question: {
+        username: 'jbrister71',
+        email: "email@email.email"
+    }
 }
 
 // TODO: Create a function to write README file

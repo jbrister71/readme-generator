@@ -1,36 +1,47 @@
 function generateTableOfContents(tableOfContents) {
-  const {installation, usage, credits, license, features, howToContribute, tests, display} = tableOfContents;
+  const {installation, usage, credits, license, features, howToContribute, tests, question, display} = tableOfContents;
   let tableString = '';
-  
+  let i = 1;
+
   if(display) {
-    console.log('here');
     if(installation.display) {
-      tableString += `[${installation.name}](${installation.link})
+      tableString += `${i}. [${installation.name}](${installation.link})
       `;
+      i++;
     }
     if(usage.display) {
-      tableString += `[${usage.name}](${usage.link})
+      tableString += `${i}. [${usage.name}](${usage.link})
       `;
+      i++;
     }
     if(credits.display) {
-      tableString += `[${credits.name}](${credits.link})
+      tableString += `${i}. [${credits.name}](${credits.link})
       `;
+      i++;
     }
     if(license.display) {
-      tableString += `[${license.name}](${license.link})
+      tableString += `${i}. [${license.name}](${license.link})
       `;
+      i++;
     }
-    if(features.display) {
-      tableString += `[${features.name}](${features.link})
+    /* if(features.display) {
+      tableString += `${i}. [${features.name}](${features.link})
       `;
-    }
+      i++;
+    } */
     if(howToContribute.display) {
-      tableString += `[${howToContribute.name}](${howToContribute.link})
+      tableString += `${i}. [${howToContribute.name}](${howToContribute.link})
       `;
+      i++;
     }
     if(tests.display) {
-      tableString += `[${tests.name}](${tests.link})
+      tableString += `${i}. [${tests.name}](${tests.link})
       `;
+      i++;
+    }
+    if(question.display) {
+      tableString += `${i}. [${question.name}](${question.link})
+        `;
     }
   }
 
@@ -41,11 +52,8 @@ function generateInstallation(installation) {
   let installationStr = '';
 
   for(let i = 0; i < installation.length; i++) {
-    installationStr += `Step ${i+1}: ${installation[i]}`;
-    if(i < installation.length-1) {
-      installationStr += `
-      `;
-    }
+    installationStr += `Step ${i+1}: ${installation[i]}.  
+    `;
   }
 
   return installationStr;
@@ -66,7 +74,7 @@ function generateHowToContribute(howToContribute) {
   let howToContributeStr = '';
 
   if(howToContribute) {
-    howToContributeStr = `## How to Contribute
+    howToContributeStr = `## Contributing
     ${howToContribute}`
   }
 
@@ -78,11 +86,27 @@ function generateTests(tests) {
 
   if(tests) {
     testsStr = `## Tests
-    ${tests}`
+    `;
+    testsStr += `${tests}`;
   }
 
   return testsStr;
 };
+
+function generateQestions(question) {
+  let questionsStr = '';
+
+  questionsStr = `## Questions
+    Questions can be directed to [my github profile](https://github.com/${question.username})`;
+
+  if(question.email) {
+    questionsStr += ` or email me at [${question.email}](${question.email})`;
+  }
+
+  questionsStr += '.';
+
+  return questionsStr;
+}
 
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
@@ -93,22 +117,23 @@ function renderLicenseBadge(license) {
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-  return `${license.link}`;
+  return `[This app is under the ${license.name} license.](${license.link})
+  `;
 }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
   return `## License
-  ${renderLicenseLink(license)}
-  ${renderLicenseBadge(license)}`;
+  ${renderLicenseLink(license)}`;
 }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  const {title, description, tableOfContents, installation, usage, credits, license, features, howToContribute, tests} = data;
+  const {title, description, tableOfContents, installation, usage, credits, license, features, howToContribute, tests, question} = data;
   
-  return `# ${title}
+  const markdown = `# ${title}
+  ${renderLicenseBadge(license)}
 
   ## Description
   ${description}
@@ -126,12 +151,16 @@ function generateMarkdown(data) {
 
   ${renderLicenseSection(license)}
 
-  ${generateFeatures(features)}
-
   ${generateHowToContribute(howToContribute)}
 
   ${generateTests(tests)}
+
+  ${generateQestions(question)}
 `;
+
+  const markdownNoTab = markdown.replaceAll("    ", "");
+
+  return markdownNoTab;
 };
 
 module.exports = {

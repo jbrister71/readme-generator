@@ -1,53 +1,3 @@
-function generateTableOfContents(tableOfContents) {
-  const {installation, usage, credits, license, features, howToContribute, tests, question, display} = tableOfContents;
-  let tableString = '';
-  let i = 1;
-
-  if(display) {
-    if(installation.display) {
-      tableString += `${i}. [${installation.name}](${installation.link})
-      `;
-      i++;
-    }
-    if(usage.display) {
-      tableString += `${i}. [${usage.name}](${usage.link})
-      `;
-      i++;
-    }
-    if(credits.display) {
-      tableString += `${i}. [${credits.name}](${credits.link})
-      `;
-      i++;
-    }
-    if(license.display) {
-      tableString += `${i}. [${license.name}](${license.link})
-      `;
-      i++;
-    }
-    /* if(features.display) {
-      tableString += `${i}. [${features.name}](${features.link})
-      `;
-      i++;
-    } */
-    if(howToContribute.display) {
-      tableString += `${i}. [${howToContribute.name}](${howToContribute.link})
-      `;
-      i++;
-    }
-    if(tests.display) {
-      tableString += `${i}. [${tests.name}](${tests.link})
-      `;
-      i++;
-    }
-    if(question.display) {
-      tableString += `${i}. [${question.name}](${question.link})
-        `;
-    }
-  }
-
-  return tableString;
-};
-
 function generateInstallation(installation) {
   let installationStr = '';
 
@@ -93,14 +43,14 @@ function generateTests(tests) {
   return testsStr;
 };
 
-function generateQestions(question) {
+function generateQuestions(username, email) {
   let questionsStr = '';
 
   questionsStr = `## Questions
-    Questions can be directed to [my github profile](https://github.com/${question.username})`;
+    Questions can be directed to [my github profile](https://github.com/${username})`;
 
-  if(question.email) {
-    questionsStr += ` or email me at [${question.email}](${question.email})`;
+  if(email) {
+    questionsStr += ` or email me at [${email}](${email})`;
   }
 
   questionsStr += '.';
@@ -111,26 +61,56 @@ function generateQestions(question) {
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
-  return `![${license.name}](https://img.shields.io/badge/license-${license.name}-green)`;
+  if(license === 'No License') {
+    return '';
+  }
+
+  licenseNoSpace = license[0].replaceAll(" ", "_");
+  return `![${license}](https://img.shields.io/badge/license-${licenseNoSpace}-green)`;
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-  return `[This app is under the ${license.name} license.](${license.link})
-  `;
+  let link = '';
+
+  console.log(license);
+  
+  if(license == 'Apache License 2.0') {
+    link = "https://www.apache.org/licenses/LICENSE-2.0";
+  }
+  else if(license == 'GNU GPLv2') {
+    link = "https://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html";
+  }
+  else if(license == 'GNU GPLv3') {
+    link =  "https://www.gnu.org/licenses/gpl-3.0-standalone.html";
+  }
+  else if(license == 'MIT') {
+    link = "https://spdx.org/licenses/MIT.html";
+  }
+  else if(license == 'ISC') {
+    link = "https://www.isc.org/licenses/";
+  }
+  else {
+      link = '';
+  }
+
+  return link;
 }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
+  if(license === 'No License') {
+    return '';
+  }
   return `## License
-  ${renderLicenseLink(license)}`;
+  [This app is under the ${license} license.](${renderLicenseLink(license)})`;
 }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  const {title, description, tableOfContents, installation, usage, credits, license, features, howToContribute, tests, question} = data;
+  const {title, description, installation, usage, license, contributing, tests, username, email} = data;
   
   const markdown = `# ${title}
   ${renderLicenseBadge(license)}
@@ -139,26 +119,31 @@ function generateMarkdown(data) {
   ${description}
 
   ## Table of Contents
-  ${generateTableOfContents(tableOfContents)}
+  1. [Installation](#installation)  
+  2. [Usage](#usage)  
+  4. [License](#license)  
+  5. [Contributing](#contributing)  
+  6. [Test](#tests)
+  7. [Questions](#questions)  
+
   ## Installation
-  ${generateInstallation(installation)}
+  ${installation}
 
   ## Usage
   ${usage}
 
-  ## Credits
-  ${credits}
-
   ${renderLicenseSection(license)}
 
-  ${generateHowToContribute(howToContribute)}
+  ## Contributing
+  ${contributing}
 
-  ${generateTests(tests)}
+  ## Tests
+  ${tests}
 
-  ${generateQestions(question)}
+  ${generateQuestions(username, email)}
 `;
 
-  const markdownNoTab = markdown.replaceAll("    ", "");
+  const markdownNoTab = markdown.replaceAll("  ", "");
 
   return markdownNoTab;
 };

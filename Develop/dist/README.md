@@ -1,8 +1,8 @@
-# this this
-![Apache License 2.0](https://img.shields.io/badge/license-Apache_License_2.0-green)
+# Deci-Hex
+![GNU GPLv3](https://img.shields.io/badge/license-GNU_GPLv3-green)
 
 ## Description
-this
+A simple decimal to hexadecimal converter
 
 ## Table of Contents
 1. [Installation](#installation)
@@ -13,19 +13,19 @@ this
 7. [Questions](#questions)
 
 ## Installation
-this
+Download the source code from github and run npm install to install the dependencies
 
 ## Usage
-this
+This application will take a decimal number and return its hexadecimal equivalent.
 
 ## License
-[This app is under the Apache License 2.0 license.](https://www.apache.org/licenses/LICENSE-2.0)
+[This app is under the GNU GPLv3 license.](https://www.gnu.org/licenses/gpl-3.0-standalone.html)
 
 ## Contributing
-thi
+Add your changes to a repository and the project lead will merge the changes if they meet standards.
 
 ## Tests
-this
+This project uses Jest for testing.
 
 ## Questions
-Questions can be directed to [my github profile](https://github.com/this) or email me at [this](this).
+Questions can be directed to [my github profile](https://github.com/jbrister71) or email me at [fakeemail@fakeemail.fake](fakeemail@fakeemail.fake).
